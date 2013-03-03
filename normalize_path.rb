@@ -5,17 +5,13 @@
 # read standard input
 inp = STDIN.read
 
-# replace '/./' case with '/'
-reg_a = /\/\.{1}\//
-inp = inp.gsub(reg_a, '/')
-
-# replace 'bar/../baz' case with ''
-reg_b = /[^\/]*\/\.{2}\//
-inp = inp.gsub(reg_b, "")
+# replace 'bar/../' case with ''
+reg_a = /\w+\/\.{2}\//
+inp = inp.gsub(reg_a, '')
 
 # replace './' or '../' with ''
-reg_c = /^\.{1,2}\//
-inp = inp.gsub(reg_c, '')
+reg_b = /\.{1,2}\//
+inp = inp.gsub(reg_b, '')
 
 # write to standard output
 STDOUT.write inp
